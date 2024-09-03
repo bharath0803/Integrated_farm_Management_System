@@ -4,17 +4,31 @@ struct farmer {
 	int id[50];
 	char reg_name[50][100];
 	};
-int comform_reg(int reg_id)
+	
+int new_reg(char new_name[50],int reg_id,int reg_choise)
 {
-	struct farmer conform_farm;
-	for(int i=0;i<sizeof(conform_farm.id)/sizeof(conform_farm.id[0]);i++)
+	struct farmer farm;
+	int num_count;
+	if(reg_choise==1)
 	{
-		if(reg_id==conform_farm.id[i])
-			return 1;
-		else
-			return 0;
+		strcpy(farm.reg_name[num_count], new_name);
+		//farm.reg_name[num_count]=new_name;
+		farm.id[num_count]=reg_id;
+		reg_choise++;
+	}
+	else if(reg_choise==0)
+	{
+		for(int i=0;i<sizeof(farm.id)/sizeof(farm.id[0]);i++)
+			{
+				if(reg_id==farm.id[i])
+					return 1;
+				else
+					return 0;
+			}
 	}
 }
+
+
 void market_price()
 {	
 	printf("\nRice: ₹3507/Quintal (₹35.07/kg)\n");
@@ -36,18 +50,19 @@ int stay_choise(char i)
 	}
 }
 
-void bill(int aadhar_num)
+void bill()
 {
 	float num_kg,cost,total;
+	int option2=0;
 	while(1)
 	{
+
 		printf("\n\nPlease select your product amoung this options");
 		printf("\n\t1) Rice \n");
 		printf("\t2) wheat\n");
 		printf("\t3) ragi\n");
 		printf("\t4) tur dal\n\n");
-		printf("\tEnter your choice: ");
-		int option2;
+		printf("Enter your choice:");
 		scanf("%d",&option2);
 		switch (option2)
 		{
@@ -84,6 +99,8 @@ void bill(int aadhar_num)
 		}
 		total+=cost;
 		char choise;
+		printf("the cost of your crop is - %.2f", cost);
+		printf("total cost is %.2f",total);
 		printf("\n\ndo you still want to sell the product:\nif yes enter Y\nif no enter N\nEnter your choise:");
 		scanf("%c",&choise);
 		if(stay_choise(choise)==1)
@@ -96,8 +113,7 @@ void bill(int aadhar_num)
 
 int main()
 {
-	struct farmer farm;
-	int option, reg_num, num;
+	int option, reg_num;
 	char name[100];
 	printf("Welcome to IFM application\n\n");
 	do
@@ -118,26 +134,27 @@ int main()
 			{
 
 				printf("\n\nEnter your name:");
+				//scanf("%[\n]",name);
 				fgets(name, sizeof(name), stdin);
 				name[strcspn(name, "\n")]=0;
-				strcpy(farm.reg_name[num], name);
-				printf("\nEnter your last 4 digit of you aadhar card for registration:");
+				printf("Enter your last 4 digit of you aadhar card for registration:");
 				scanf("%d",&reg_num);
-
-				farm.id[num]=reg_num;
+				new_reg(name,reg_num,1);
 				printf("\n....Your registration is successful....\nYour registration ID is %d\n\n",reg_num);
-				num++;
+				
 				break;
-			} 
+			}
 			case 3:
 			{
 				while(1)
 				{
 					printf("\nEnter your last 4 digit of you aadhar card:");
 					scanf("%d",&reg_num);
-					if(comform_reg(reg_num)==1)
+					printf("\nPlease enter your registered name:");
+					scanf("%[\n]",name);
+					if(new_reg(name,reg_num,0)==1)
 					{	
-						bill(reg_num);
+						bill();
 						break;
 					}
 					else
