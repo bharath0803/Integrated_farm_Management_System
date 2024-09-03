@@ -5,22 +5,31 @@ struct farmer {
 	char reg_name[50][100];
 	};
 	
-int new_reg(char new_name[50],int reg_id,int reg_choise)
+int registration(int reg_choise)
 {
 	struct farmer farm;
-	int num_count;
-	if(reg_choise==1)
+	char name[50];
+	int num_count, reg_num;
+	if(reg_choise==0)
 	{
-		strcpy(farm.reg_name[num_count], new_name);
+		printf("\n\nEnter your name:");
+		fgets(name,sizeof(name), stdin);
+		name[strcspn(name,"\n")]=0;
+		printf("\nEnter your last 4 digit of your aadhar card for registration:");
+		scanf("%d",&reg_num);
+		printf("\n....Your registration is successful....\nYour registration ID is %d\n\n",reg_num);
+		strcpy(farm.reg_name[num_count], name);
 		//farm.reg_name[num_count]=new_name;
-		farm.id[num_count]=reg_id;
-		reg_choise++;
+		farm.id[num_count]=reg_num;
+		num_count++;
 	}
-	else if(reg_choise==0)
+	else if(reg_choise==1)
 	{
+		printf("\nEnter your last 4 digit of you aadhar card:");
+		scanf("%d",&reg_num);
 		for(int i=0;i<sizeof(farm.id)/sizeof(farm.id[0]);i++)
 			{
-				if(reg_id==farm.id[i])
+				if(reg_num==farm.id[i])
 					return 1;
 				else
 					return 0;
@@ -113,7 +122,7 @@ void bill()
 
 int main()
 {
-	int option, reg_num;
+	int option, i;
 	char name[100];
 	printf("Welcome to IFM application\n\n");
 	do
@@ -132,27 +141,14 @@ int main()
 				break;
 			case 2:
 			{
-
-				printf("\n\nEnter your name:");
-				//scanf("%[\n]",name);
-				fgets(name, sizeof(name), stdin);
-				name[strcspn(name, "\n")]=0;
-				printf("Enter your last 4 digit of you aadhar card for registration:");
-				scanf("%d",&reg_num);
-				new_reg(name,reg_num,1);
-				printf("\n....Your registration is successful....\nYour registration ID is %d\n\n",reg_num);
-				
+				registration(0);
 				break;
 			}
 			case 3:
 			{
 				while(1)
 				{
-					printf("\nEnter your last 4 digit of you aadhar card:");
-					scanf("%d",&reg_num);
-					printf("\nPlease enter your registered name:");
-					scanf("%[\n]",name);
-					if(new_reg(name,reg_num,0)==1)
+					if(registration(1)==1)
 					{	
 						bill();
 						break;
