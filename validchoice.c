@@ -5,23 +5,15 @@ int validchoice(){
 	char ch;
 	while (1) {
 		printf("\nEnter your choice: ");
-		if (scanf("%d", &choice) == 1) 
-		{
+		if (scanf("%d", &choice) == 1){
 			ch = getchar();
-			if (ch == '\n') 
-			{
-				return choice;
-			} 
-			else 
-			{
+			if (ch == '\n'){	return choice;} 
+			else{
 				printf("Invalid Choicex. Please enter a valid option.\n");
-				while (ch != '\n' && ch != EOF) 
-				{
+				while (ch != '\n' && ch != EOF)
 					ch = getchar();
-				}
 			}
-		} 
-
+		}
 		else 
 		{
 			printf("Invalid Choice. Please enter a valid option.\n");
