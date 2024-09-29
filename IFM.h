@@ -3,19 +3,26 @@
 
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
+
+char File_name[]="Farm_document.txt";
 
 struct farmer {
-	int id[50];
-	char reg_name[50][100];
+	int id;
+	char reg_name[100];
 	};
 	
-int registration(int reg_choise);
 void bill();
 int length(int num);
 int stay_choise(char i);
 void display();
 int validchoice();
 void market_price();
+void create_file();
+int add_new(int num,char name[]);
+int new_reg();
+int comform_reg();
+int search_ID(int ID);
 
 
 #endif
