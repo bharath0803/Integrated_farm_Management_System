@@ -1,15 +1,14 @@
 #include"IFM.h"
-#include"bill.c" //
-#include"length.c" //
-#include"stay_choise.c" //
-#include"display.c" //
-#include"validchoice.c" //
-#include"market_price.c" //
-#include"create_file.c" //
-#include"add_new.c" //
-#include"new_reg.c" //
-#include"comform_reg.c" //
-#include"search_ID.c" //
+#include"bill.c" 
+#include"length.c" 
+#include"stay_choise.c" 
+#include"display.c" 
+#include"validchoice.c" 
+#include"market_price.c" 
+#include"add_new.c" 
+#include"new_reg.c" 
+#include"comform_reg.c" 
+
 
 
 
@@ -26,7 +25,7 @@ int main()
 			case 1:{market_price();		break;}
 			case 2:{new_reg();		break;}
 			case 3:{while(1){
-					if(comform_reg()==1){	bill();		break;}
+					if(comform_reg()==1){bill();		break;}
 					else{printf("\n\tInvalid registration id..........\n");}
 				}break;}
 			case 4:{printf("\nExiting....\n");	break;}
