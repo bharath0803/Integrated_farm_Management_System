@@ -2,7 +2,7 @@
 
 
 
-int add_new(int num,char name[])
+int add_new(int num,char *name)
 {
 	FILE *File=fopen(File_name,"w");
 	if(!File){

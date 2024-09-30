@@ -19,7 +19,7 @@ void display();
 int validchoice();
 void market_price();
 void create_file();
-int add_new(int num,char name[]);
+int add_new(int num,char *name);
 int new_reg();
 int comform_reg();
 int search_ID(int ID);
