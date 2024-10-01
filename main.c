@@ -9,9 +9,6 @@
 #include"new_reg.c" 
 #include"comform_reg.c" 
 
-
-
-
 int main()
 {
 	char name[100];

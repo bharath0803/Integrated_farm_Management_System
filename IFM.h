@@ -14,7 +14,7 @@ struct farmer {
 	
 void bill();
 int length(int num);
-int stay_choise(char i);
+int stay_choise();
 void display();
 int validchoice();
 void market_price();

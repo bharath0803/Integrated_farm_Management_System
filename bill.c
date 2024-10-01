@@ -2,7 +2,7 @@
 #include"IFM.h"
 
 void bill(){
-	float num_kg,cost,total;
+	float num_kg,cost,total=0;
 	int option2=0;
 	while(1){
 		printf("\n\nPlease select your product amoung this options");
@@ -44,9 +44,8 @@ void bill(){
 		char choise;
 		printf("The cost of your crop is - %.2f\n\n", cost);
 		printf("Total cost is %.2f\n\n",total);
-		printf("\n\nDo you still want to sell other product:\nIf yes enter Y\nIf no enter N\nEnter your choise:");
-		choise=getchar();
-		if(stay_choise(choise)!=1)
+		printf("\n\nDo you still want to sell other product:");
+		if(stay_choise()!=1)
 			break;
 	}
 }
