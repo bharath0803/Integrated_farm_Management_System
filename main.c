@@ -21,10 +21,12 @@ int main()
 		switch (option){
 			case 1:{market_price();		break;}
 			case 2:{new_reg();		break;}
-			case 3:{while(1){
+			case 3:{
+				while(1){
 					if(comform_reg()==1){bill();		break;}
 					else{printf("\n\tInvalid registration id..........\n");}
-				}break;}
+				}
+				break;}
 			case 4:{printf("\nExiting....\n");	break;}
 			default:printf("\nEnter valid input...\n");
 		}
